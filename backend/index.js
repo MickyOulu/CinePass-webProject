@@ -1,0 +1,13 @@
+const express = require("express");
+const app = express();
+const { Pool } = require("pg");
+
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Hello from CinePass!");
+});
+
+app.listen(PORT, () => {
+  console.log("Server running on port " + PORT);
+});
