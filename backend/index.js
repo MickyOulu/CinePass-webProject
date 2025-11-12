@@ -21,7 +21,7 @@ app.get("/", async (req, res) => {
     res.send(result.rows[0].message); // Send the DB result to the browser
   } catch (err) {
     console.error("DB connection error:", err);
-    res.status(500).send("Database connection error 😅");
+    res.status(500).send("Database connection error");
   }
 });
 
