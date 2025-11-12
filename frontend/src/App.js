@@ -33,7 +33,7 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3000/") // your backend URL
+    fetch("https://cinepass-h6f0f2b9grf9cwen.swedencentral-01.azurewebsites.net/") 
       .then(res => res.text())
       .then(data => setMessage(data))
       .catch(err => console.error(err));
