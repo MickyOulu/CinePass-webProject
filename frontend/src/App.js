@@ -13,8 +13,9 @@ function App() {
     e.preventDefault();
 
     try{
-      //const response= await fetch("http://localhost:3000/login"
-      const response= await fetch("https://cinepass-h6f0f2b9grf9cwen.swedencentral-01.azurewebsites.net//login", {
+      const response= await fetch(`${backendUrl}/login`, {
+      //const response= await fetch("http://localhost:3000/login", {
+      //const response= await fetch("https://cinepass-h6f0f2b9grf9cwen.swedencentral-01.azurewebsites.net//login", {
         method:"POST",
         headers: {"content-type":"application/json"},
         body:JSON.stringify({username, password}),
