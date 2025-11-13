@@ -5,7 +5,7 @@ const { Pool } = require("pg");
 const pool = require("./db");
 
 app.use(cors(
-  { origin: "https://cinepass-h6f0f2b9grf9cwen.swedencentral-01.azurewebsites.net/"}
+  { origin: ["http://localhost:3001","https://cinepass-h6f0f2b9grf9cwen.swedencentral-01.azurewebsites.net/"]}
 ));
  
 
