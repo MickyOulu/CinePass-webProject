@@ -1,0 +1,131 @@
+/* Background */
+.dashboard-container {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(160deg, #031a2f, #082c45, #0d3b57);
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+
+/* Header */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: rgba(0, 20, 35, 0.55);
+  border-radius: 14px;
+  backdrop-filter: blur(10px);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-logo {
+  width: 55px;
+  border-radius: 10px;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 22px;
+}
+
+.header-subtitle {
+  margin: 0;
+  margin-top: -4px;
+  font-size: 13px;
+  color: #a4c7d8;
+}
+
+/* Logout Button */
+.logout-btn {
+  padding: 10px 20px;
+  background: #bdeaff;
+  color: #022f45;
+  border: none;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(150, 220, 255, 0.4);
+}
+
+/* Overview Title */
+.overview-title {
+  margin-top: 35px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Cards Row */
+.card-row {
+  margin-top: 25px;
+  display: flex;
+  gap: 18px;
+}
+
+.dash-card {
+  width: 22%;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 25px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.card-icon {
+  font-size: 32px;
+  background: #bdeaff;
+  padding: 14px;
+  border-radius: 12px;
+  width: fit-content;
+}
+
+.card-growth {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 12px;
+  background: #1a7f3c;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.green { background: #1a7f3c; }
+.gray { color: #ccc; }
+
+.card-value {
+  margin-top: 25px;
+  font-size: 28px;
+}
+
+.card-label {
+  margin-top: 5px;
+  color: #a9cbdc;
+}
+
+/* Summary Row */
+.summary-row {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.summary-card {
+  width: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  padding: 25px;
+  border-radius: 16px;
+}
+
+.summary-card p {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+}
+
+.right-number {
+  color: #cfe9f7;
+}
