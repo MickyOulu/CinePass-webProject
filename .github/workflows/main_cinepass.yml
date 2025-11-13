@@ -20,19 +20,25 @@ jobs:
       with:
         node-version: '14'  # Specify the Node.js version to use
 
-    # Step 3: Install dependencies
+    # Step 3: Navigate to the frontend directory and install dependencies
     - name: Install dependencies
-      run: npm install
+      run: |
+        cd frontend  # Change to the frontend directory
+        npm install  # Install dependencies for the React app
+      working-directory: frontend  # Ensure npm install is done in the frontend directory
 
     # Step 4: Build the React app
     - name: Build the React app
-      run: npm run build  # This creates the `build/` folder
+      run: |
+        cd frontend  # Change to the frontend directory
+        npm run build  # Build the React app for production
+      working-directory: frontend  # Ensure npm run build is done in the frontend directory
 
     # Step 5: Deploy the build folder to Azure Web App
     - name: Deploy to Azure Web App
       uses: Azure/webapps-deploy@v2
       with:
-        app-name: <your-azure-app-name>  # Replace with your Azure Web App name
+        app-name: <your-azure-app-name>  # Replace with your Azure App Service name
         slot-name: production  # Optional, for deployment slots
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}  # GitHub Secret for publish profile
-        package: ./build  # Path to the `build/` folder that contains your production-ready React app
+        package: ./frontend/build  # Path to the `build/` folder (after build is complete)
