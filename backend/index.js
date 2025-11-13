@@ -4,32 +4,35 @@ const cors = require("cors");
 const { Pool } = require("pg");
 const pool = require("./db");
 
-const PORT = process.env.PORT || 3000;
+app.use(cors());
+ 
 
-// app.get("/", (req, res) => {
-//   res.send("Hello from CinePass!");
-// });
+app.use(express.json()); 
 
-// app.listen(PORT, () => {
-//   console.log("Server running on port " + PORT);
-// });
+app.post("/login", async (req, res) => {
+   console.log("Request body:", req.body);
 
-app.use(cors({
-  origin: "http://localhost:3001", // allow local frontend
-  methods: ["GET", "POST", "PUT", "DELETE"], // optional
-}));
+   const { username, password } = req.body;
 
-
-app.get("/", async (req, res) => {
-  try {
-    // Run a simple query to check DB connection
-    const result = await pool.query("SELECT 'Hello from DB' AS message");
-    res.send(result.rows[0].message); // Send the DB result to the browser
+  try{
+    const result= await pool.query("select * from admin_users where username=$1 and password=$2",
+       [username, password]);
+       console.log("Query result:", result.rows);
+  
+    if (result.rows.length > 0) {
+    res.json({ success: true, message: "Welcome to Cinepass" });
+  }
+  else {
+    res.json({ success: false, message: "Check username and Password" });
+  }
   } catch (err) {
-    console.error("DB connection error:", err);
-    res.status(500).send("Database connection error");
+    console.error("Error  login:", err);
+    res.status(500).json({ success: false, message: "Server error" });
   }
 });
+
+const PORT = process.env.PORT || 3000;
+
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
