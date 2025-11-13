@@ -1,73 +1,38 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy Node.js app to Azure Web App - cinepass
+name: Deploy React App to Azure Web App
 
 on:
   push:
     branches:
-      - main
-  workflow_dispatch:
+      - main  # Trigger deployment on pushes to the main branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read #This is required for actions/checkout
 
     steps:
-      - uses: actions/checkout@v4
+    # Step 1: Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v3
-        with:
-          node-version: '22.x'
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'  # Specify the Node.js version to use
 
-      - name: npm install, build, and test
-        working-directory: ./backend 
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+    # Step 3: Install dependencies
+    - name: Install dependencies
+      run: npm install
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
-        with:
-          name: node-app
-          path: backend
+    # Step 4: Build the React app
+    - name: Build the React app
+      run: npm run build  # This creates the `build/` folder
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    permissions:
-      id-token: write #This is required for requesting the JWT
-      contents: read #This is required for actions/checkout
-
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
-        with:
-          name: node-app
-          path: node-app
-      
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_A54C605A468747F0ACC8F3047C92896D }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_2E96983C03934F68A45C16E50F464E08 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F94CEC8181764648A83C10DFABD87AD3 }}
-
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: 'cinepass'
-          slot-name: 'Production'
-          package: node-app
-
-          
-
-
-
-
-
+    # Step 5: Deploy the build folder to Azure Web App
+    - name: Deploy to Azure Web App
+      uses: Azure/webapps-deploy@v2
+      with:
+        app-name: <your-azure-app-name>  # Replace with your Azure Web App name
+        slot-name: production  # Optional, for deployment slots
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}  # GitHub Secret for publish profile
+        package: ./build  # Path to the `build/` folder that contains your production-ready React app
