@@ -17,13 +17,12 @@ const Login = ({ setIsLoggedIn }) => {
     }
 
     try {
-      // ✅ CORRECT BACKEND URL
-      const response = await fetch("http://localhost:3000/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password }),
-      });
-
+     
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+});
       const data = await response.json();
       console.log("Response from backend:", data);
 
