@@ -7,11 +7,13 @@ function App() {
   const [password,setPassword]= useState("");
   const [message,setMessage]= useState("");
 
+  const backendUrl = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000";
+  
   const handleLogin= async (e)=>{
     e.preventDefault();
 
     try{
-      const response= await fetch("https://cinepass-h6f0f2b9grf9cwen.swedencentral-01.azurewebsites.net/login", {
+      const response= await fetch("http://localhost:3000/login", {
         method:"POST",
         headers: {"content-type":"application/json"},
         body:JSON.stringify({username, password}),
