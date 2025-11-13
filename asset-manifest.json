@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.c006cb96.css",
+    "main.js": "/static/js/main.a50a3b95.js",
+    "static/media/north-star-logo.jpg": "/static/media/north-star-logo.b56436cc4097f868aa4a.jpg",
+    "index.html": "/index.html",
+    "main.c006cb96.css.map": "/static/css/main.c006cb96.css.map",
+    "main.a50a3b95.js.map": "/static/js/main.a50a3b95.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c006cb96.css",
+    "static/js/main.a50a3b95.js"
+  ]
+}
