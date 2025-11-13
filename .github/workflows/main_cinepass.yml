@@ -14,8 +14,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Step 2: Print the current working directory (for debugging)
-    - name: Print the working directory
+    # Step 2: Print the current working directory and list files (for debugging)
+    - name: Print working directory and list files
       run: |
         pwd
         ls -al
