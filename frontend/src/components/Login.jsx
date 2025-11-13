@@ -2,7 +2,44 @@ import React from "react";
 import "../style/login.css";
 import logo from "../assets/north-star-logo.jpg";
 
-const Login = () => {
+const Login = ({ setIsLoggedIn }) => {
+
+  // -----------------------------
+  // LOGIN FUNCTION
+  // -----------------------------
+  const handleLogin = async () => {
+    const username = document.querySelector("#username").value;
+    const password = document.querySelector("#password").value;
+
+    if (!username || !password) {
+      alert("Please enter both username and password");
+      return;
+    }
+
+    try {
+      // ✅ CORRECT BACKEND URL
+      const response = await fetch("http://localhost:3000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const data = await response.json();
+      console.log("Response from backend:", data);
+
+      if (data.success) {
+        alert("Login Successful!");
+        setIsLoggedIn(true);   // Redirect to dashboard
+      } else {
+        alert(data.message);
+      }
+
+    } catch (error) {
+      console.error("Login Error:", error);
+      alert("Server error — backend not responding");
+    }
+  };
+
   return (
     <div className="page-background">
       <div className="login-card">
@@ -18,7 +55,7 @@ const Login = () => {
           </div>
         </div>
 
-        {/* Lock Icon (UPDATED) */}
+        {/* Lock Icon */}
         <div className="lock-box">
           <div className="lock-circle">
             <span className="lock-symbol">🔒</span>
@@ -29,12 +66,12 @@ const Login = () => {
         <h2 className="main-title">Admin Portal</h2>
         <p className="subtitle">Secure access to North Star Booking management</p>
 
-        {/* Email */}
+        {/* Username */}
         <div className="input-group">
           <label>Email / Username</label>
           <div className="input-wrapper">
             <span className="input-icon">📧</span>
-            <input type="text" placeholder="admin@northstar.com" />
+            <input id="username" type="text" placeholder="admin@northstar.com" />
           </div>
         </div>
 
@@ -43,7 +80,7 @@ const Login = () => {
           <label>Password</label>
           <div className="input-wrapper">
             <span className="input-icon">🔒</span>
-            <input type="password" placeholder="Enter your password" />
+            <input id="password" type="password" placeholder="Enter your password" />
             <span className="eye-icon">👁️</span>
           </div>
         </div>
@@ -51,8 +88,10 @@ const Login = () => {
         {/* Forgot */}
         <div className="forgot-text">Forgot password?</div>
 
-        {/* Button */}
-        <button className="login-btn">Login to Dashboard</button>
+        {/* Login Button */}
+        <button className="login-btn" onClick={handleLogin}>
+          Login to Dashboard
+        </button>
 
         {/* Demo box */}
         <div className="demo-box">
