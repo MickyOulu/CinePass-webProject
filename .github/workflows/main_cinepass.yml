@@ -14,27 +14,33 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    # Step 2: Set up Node.js
+    # Step 2: Print the current working directory (for debugging)
+    - name: Print the working directory
+      run: |
+        pwd
+        ls -al
+
+    # Step 3: Set up Node.js
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
         node-version: '14'  # Specify the Node.js version to use
 
-    # Step 3: Install dependencies in the frontend directory
+    # Step 4: Install dependencies in the frontend directory
     - name: Install dependencies
       run: |
         cd frontend  # Navigate to the frontend directory
         npm install  # Install dependencies for the React app
       working-directory: frontend  # Ensure npm install is done in the frontend directory
 
-    # Step 4: Build the React app
+    # Step 5: Build the React app
     - name: Build the React app
       run: |
         cd frontend  # Navigate to the frontend directory
         npm run build  # Build the React app for production
       working-directory: frontend  # Ensure npm run build is done in the frontend directory
 
-    # Step 5: Deploy the build folder to Azure Web App
+    # Step 6: Deploy the build folder to Azure Web App
     - name: Deploy to Azure Web App
       uses: Azure/webapps-deploy@v2
       with:
