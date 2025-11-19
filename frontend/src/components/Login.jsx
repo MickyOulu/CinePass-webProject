@@ -4,9 +4,6 @@ import logo from "../assets/north-star-logo.jpg";
 
 const Login = ({ setIsLoggedIn }) => {
 
-  // -----------------------------
-  // LOGIN FUNCTION
-  // -----------------------------
   const handleLogin = async () => {
     const username = document.querySelector("#username").value;
     const password = document.querySelector("#password").value;
@@ -28,7 +25,7 @@ const Login = ({ setIsLoggedIn }) => {
 
       if (data.success) {
         alert("Login Successful!");
-        setIsLoggedIn(true);   // Redirect to dashboard
+        setIsLoggedIn(true);   
       } else {
         alert(data.message);
       }
