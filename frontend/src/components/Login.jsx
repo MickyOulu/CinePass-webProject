@@ -98,7 +98,7 @@ const Login = ({ setIsLoggedIn }) => {
 
         {/* Footer */}
         <footer className="footer">
-          © 2024 North Star Booking. All rights reserved.
+          © 2025 North Star Booking. All rights reserved.
         </footer>
 
       </div>
