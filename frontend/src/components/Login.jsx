@@ -3,10 +3,13 @@ import "../style/login.css";
 import logo from "../assets/north-star-logo.jpg";
 
 const Login = ({ setIsLoggedIn }) => {
-
+ console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL);
+  // -----------------------------
+  // LOGIN FUNCTION
+  // -----------------------------
   const handleLogin = async () => {
-    const username = document.querySelector("#username").value;
-    const password = document.querySelector("#password").value;
+    const username = document.querySelector("#username").value.trim();
+    const password = document.querySelector("#password").value.trim();
 
     if (!username || !password) {
       alert("Please enter both username and password");
@@ -14,18 +17,21 @@ const Login = ({ setIsLoggedIn }) => {
     }
 
     try {
-     
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ username, password }),
-});
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password }),
+        }
+      );
+
       const data = await response.json();
       console.log("Response from backend:", data);
 
       if (data.success) {
         alert("Login Successful!");
-        setIsLoggedIn(true);   
+        setIsLoggedIn(true);   // Redirect to dashboard
       } else {
         alert(data.message);
       }
@@ -98,7 +104,7 @@ const Login = ({ setIsLoggedIn }) => {
 
         {/* Footer */}
         <footer className="footer">
-          © 2025 North Star Booking. All rights reserved.
+          © 2024 North Star Booking. All rights reserved.
         </footer>
 
       </div>

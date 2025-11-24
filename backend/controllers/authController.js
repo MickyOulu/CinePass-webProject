@@ -1,31 +1,66 @@
-const pool = require("../db");
+// const loginController = async (req, res) => {
+//   const { username, password } = req.body;
+
+//   // Temporary hardcoded login
+//   if (username === "admin@northstar.com" && password === "admin123") {
+//     return res.json({
+//       success: true,
+//       message: "Login successful!"
+//     });
+//   }
+
+//   return res.json({
+//     success: false,
+//     message: "Invalid username or password"
+//   });
+// };
+
+// module.exports = { loginController };
+
+const pool = require("../db"); // PostgreSQL connection
 
 const loginController = async (req, res) => {
-  console.log("Login request body:", req.body);
-
   const { username, password } = req.body;
 
+  console.log("LOGIN REQUEST:", username, password);
+
   try {
+    // Query admin_users table
     const result = await pool.query(
-      "SELECT * FROM admin_users WHERE username=$1 AND password=$2",
-      [username, password]
+      "SELECT * FROM admin_users WHERE username = $1",
+      [username]
     );
 
-    console.log("Database result:", result.rows);
-
-    if (result.rows.length > 0) {
-      return res.json({
-        success: true,
-        message: "Login successful!"
-      });
-    } else {
+    // If no user found
+    if (result.rows.length === 0) {
       return res.json({
         success: false,
-        message: "Invalid username or password"
+        message: "User not found"
       });
     }
-  } catch (err) {
-    console.error("Login Error:", err);
+
+    const user = result.rows[0];
+
+    // Compare passwords (plain text for now)
+    if (user.password !== password) {
+      return res.json({
+        success: false,
+        message: "Incorrect password"
+      });
+    }
+
+    // Success
+    return res.json({
+      success: true,
+      message: "Login successful",
+      user: {
+        id: user.id,
+        username: user.username
+      }
+    });
+
+  } catch (error) {
+    console.error("Login error:", error);
     return res.status(500).json({
       success: false,
       message: "Server error"

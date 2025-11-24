@@ -1,131 +1,142 @@
-/* Background */
-.dashboard-container {
+/* Background gradient like your screenshot */
+.dashboard-page {
   min-height: 100vh;
-  padding: 30px;
-  background: linear-gradient(160deg, #031a2f, #082c45, #0d3b57);
-  font-family: "Poppins", sans-serif;
+  padding: 25px 40px;
+  background: linear-gradient(180deg, #003049, #001722);
   color: white;
+  font-family: "Poppins", sans-serif;
 }
 
-/* Header */
-.dashboard-header {
+/* HEADER */
+.topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 25px;
-  background: rgba(0, 20, 35, 0.55);
-  border-radius: 14px;
-  backdrop-filter: blur(10px);
 }
 
-.header-left {
+.topbar-left {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
 }
 
-.header-logo {
+.logo-img {
   width: 55px;
-  border-radius: 10px;
+  height: 55px;
+  border-radius: 50%;
 }
 
-.header-title {
+.logo-text h2 {
   margin: 0;
   font-size: 22px;
+  font-weight: 700;
 }
 
-.header-subtitle {
-  margin: 0;
-  margin-top: -4px;
-  font-size: 13px;
-  color: #a4c7d8;
+.logo-text span {
+  font-size: 12px;
+  opacity: 0.7;
 }
 
-/* Logout Button */
 .logout-btn {
-  padding: 10px 20px;
-  background: #bdeaff;
-  color: #022f45;
+  background: #b6e3ff;
   border: none;
-  font-weight: bold;
-  border-radius: 10px;
+  border-radius: 12px;
+  padding: 10px 25px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(150, 220, 255, 0.4);
+  font-weight: 600;
 }
 
-/* Overview Title */
-.overview-title {
-  margin-top: 35px;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-/* Cards Row */
-.card-row {
-  margin-top: 25px;
+/* NAVIGATION TABS */
+.nav-tabs {
+  margin-top: 30px;
   display: flex;
-  gap: 18px;
+  gap: 14px;
 }
 
-.dash-card {
-  width: 22%;
-  background: rgba(255, 255, 255, 0.07);
+.tab {
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  padding: 11px 26px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #cfeaff;
+  font-size: 14px;
+}
+
+.tab.active {
+  background: #0f4a64;
+  color: white;
+}
+
+/* MAIN TITLE */
+.dashboard-title {
+  font-size: 30px;
+  margin-top: 35px;
+  margin-bottom: 25px;
+}
+
+/* CARDS ROW */
+.stats-row {
+  display: flex;
+  gap: 22px;
+}
+
+.stats-card {
+  background: rgba(255, 255, 255, 0.08);
   padding: 25px;
-  border-radius: 16px;
+  border-radius: 20px;
+  width: 22%;
   position: relative;
 }
 
 .card-icon {
   font-size: 32px;
-  background: #bdeaff;
-  padding: 14px;
-  border-radius: 12px;
-  width: fit-content;
+  opacity: 0.9;
 }
 
-.card-growth {
+.tag-green {
+  background: rgba(0, 255, 0, 0.15);
+  color: #49ff49;
+  padding: 3px 10px;
+  border-radius: 8px;
   position: absolute;
+  right: 20px;
   top: 18px;
-  right: 18px;
   font-size: 12px;
-  background: #1a7f3c;
-  padding: 4px 10px;
-  border-radius: 12px;
 }
-
-.green { background: #1a7f3c; }
-.gray { color: #ccc; }
 
 .card-value {
-  margin-top: 25px;
+  margin-top: 22px;
   font-size: 28px;
 }
 
 .card-label {
-  margin-top: 5px;
-  color: #a9cbdc;
+  opacity: 0.7;
 }
 
-/* Summary Row */
-.summary-row {
+/* BOTTOM ROW */
+.bottom-row {
   display: flex;
-  gap: 20px;
+  gap: 22px;
   margin-top: 30px;
 }
 
 .summary-card {
   width: 50%;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.08);
   padding: 25px;
-  border-radius: 16px;
+  border-radius: 20px;
 }
 
-.summary-card p {
-  display: flex;
-  justify-content: space-between;
-  margin: 8px 0;
+.summary-title {
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 
-.right-number {
-  color: #cfe9f7;
+.right-text {
+  float: right;
+}
+
+.green {
+  color: #21ff21;
 }

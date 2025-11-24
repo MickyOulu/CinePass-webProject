@@ -1,11 +1,10 @@
   const express = require("express");
   const app = express();
   const cors = require("cors");
-  const path = require('path');
   const { Pool } = require("pg");
   const pool = require("./db");
 
-  app.use(cors( ));
+  app.use(cors(  ));
   
 
   app.use(express.json()); 
@@ -18,7 +17,7 @@
     try{
       const result= await pool.query("select * from admin_users where username=$1 and password=$2",
         [username, password]);
-        
+        console.log("Query result:", result.rows);
     
       if (result.rows.length > 0) {
       res.json({ success: true, message: "Welcome to Cinepass" });
@@ -31,13 +30,6 @@
       res.status(500).json({ success: false, message: "Server error" });
     }
   });
-
-  app.use(express.static(path.join(__dirname, 'build')));
-
-  app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
 
   const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {

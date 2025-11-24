@@ -2,51 +2,64 @@ import React from "react";
 import "../style/dashboard.css";
 import logo from "../assets/north-star-logo.jpg";
 
-const Dashboard = () => {
-  return (
-    <div className="dashboard-container">
+const Dashboard = ({ setIsLoggedIn }) => {
 
-      {/* Top Navigation */}
-      <header className="dashboard-header">
-        <div className="header-left">
-          <img src={logo} className="header-logo" alt="North Star" />
-          <div>
-            <h2 className="header-title">NORTH STAR</h2>
-            <p className="header-subtitle">ADMIN PORTAL</p>
+  return (
+    <div className="dashboard-page">
+
+      {/* ====== HEADER ====== */}
+      <header className="topbar">
+        <div className="topbar-left">
+          <img src={logo} alt="Logo" className="logo-img" />
+          <div className="logo-text">
+            <h2>NORTH STAR</h2>
+            <span>ADMIN PORTAL</span>
           </div>
         </div>
 
-        <button className="logout-btn">Logout</button>
+        <button className="logout-btn" onClick={() => setIsLoggedIn(false)}>
+  Logout
+</button>
+
       </header>
 
-      {/* Dashboard Title */}
-      <h1 className="overview-title">Dashboard Overview</h1>
+      {/* ====== NAVIGATION TABS ====== */}
+      <div className="nav-tabs">
+        <button className="tab active">Overview</button>
+        <button className="tab">Manage Shows</button>
+        <button className="tab">Staff Accounts</button>
+        <button className="tab">Manage Bookings</button>
+        <button className="tab">Revenue</button>
+      </div>
 
-      {/* 4 Main Cards */}
-      <div className="card-row">
+      {/* ====== DASHBOARD TITLE ====== */}
+      <h1 className="dashboard-title">Dashboard Overview</h1>
 
-        <div className="dash-card">
+      {/* ====== MAIN CARDS ====== */}
+      <div className="stats-row">
+
+        <div className="stats-card">
           <div className="card-icon">$</div>
-          <div className="card-growth green">+12%</div>
+          <span className="tag-green">+12%</span>
           <h2 className="card-value">€6,080</h2>
           <p className="card-label">Total Revenue</p>
         </div>
 
-        <div className="dash-card">
+        <div className="stats-card">
           <div className="card-icon">📈</div>
-          <div className="card-growth green">+8%</div>
+          <span className="tag-green">+8%</span>
           <h2 className="card-value">€3,820</h2>
           <p className="card-label">Today's Revenue</p>
         </div>
 
-        <div className="dash-card">
+        <div className="stats-card">
           <div className="card-icon">👥</div>
-          <div className="card-growth green">+15%</div>
+          <span className="tag-green">+15%</span>
           <h2 className="card-value">550</h2>
           <p className="card-label">Total Bookings</p>
         </div>
 
-        <div className="dash-card">
+        <div className="stats-card">
           <div className="card-icon">🎬</div>
           <h2 className="card-value">3</h2>
           <p className="card-label">Active Shows</p>
@@ -54,26 +67,26 @@ const Dashboard = () => {
 
       </div>
 
-      {/* Summary Row */}
-      <div className="summary-row">
+      {/* ====== BOTTOM SUMMARY ====== */}
+      <div className="bottom-row">
 
-        {/* Staff Summary */}
         <div className="summary-card">
-          <h3>Staff Summary</h3>
-          <p>Total Staff <span className="right-number">3</span></p>
-          <p>Active <span className="green right-number">3</span></p>
-          <p>Inactive <span className="gray right-number">0</span></p>
+          <h3 className="summary-title">Staff Summary</h3>
+          <p>Total Staff <span className="right-text">3</span></p>
+          <p>Active <span className="right-text green">3</span></p>
+          <p>Inactive <span className="right-text">0</span></p>
         </div>
 
-        {/* Location Performance */}
         <div className="summary-card">
-          <h3>Location Performance</h3>
-          <p>Helsinki Central <span className="right-number">€2,880</span></p>
-          <p>Cinema Nova Oulu <span className="right-number">€2,160</span></p>
-          <p>Kino Baltic Turku <span className="right-number">€1,040</span></p>
+          <h3 className="summary-title">Location Performance</h3>
+
+          <p>Helsinki Central <span className="right-text">€2,880</span></p>
+          <p>Cinema Nova Oulu <span className="right-text">€2,160</span></p>
+          <p>Kino Baltic Turku <span className="right-text">€1,040</span></p>
         </div>
 
       </div>
+
     </div>
   );
 };
