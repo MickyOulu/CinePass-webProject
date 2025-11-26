@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 import "../style/dashboard.css";
 import logo from "../assets/north-star-logo.jpg";
 
@@ -26,7 +27,9 @@ const Dashboard = ({ setIsLoggedIn }) => {
       {/* ====== NAVIGATION TABS ====== */}
       <div className="nav-tabs">
         <button className="tab active">Overview</button>
-        <button className="tab">Manage Shows</button>
+        <Link to="/manage-shows">
+          <button className="tab">Manage Shows</button>
+        </Link>
         <button className="tab">Staff Accounts</button>
         <button className="tab">Manage Bookings</button>
         <button className="tab">Revenue</button>

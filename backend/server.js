@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
+const showRoutes = require("./routes/showRoutes");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use(express.json());
 
 // ROUTES
 app.use("/auth", authRoutes);
+app.use("/api/shows", showRoutes);
 
 const PORT = process.env.PORT || 5000;  // <-- Use 5000, not 3000
 app.listen(PORT, () => {

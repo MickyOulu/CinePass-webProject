@@ -1,22 +1,3 @@
-// const loginController = async (req, res) => {
-//   const { username, password } = req.body;
-
-//   // Temporary hardcoded login
-//   if (username === "admin@northstar.com" && password === "admin123") {
-//     return res.json({
-//       success: true,
-//       message: "Login successful!"
-//     });
-//   }
-
-//   return res.json({
-//     success: false,
-//     message: "Invalid username or password"
-//   });
-// };
-
-// module.exports = { loginController };
-
 const pool = require("../db"); // PostgreSQL connection
 
 const loginController = async (req, res) => {
