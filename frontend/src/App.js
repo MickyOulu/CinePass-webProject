@@ -1,27 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import HomePage from "./components/HomePage";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <Router>
       <Routes>
+        {/* HOMEPAGE */}
+        <Route path="/" element={<HomePage />} />
 
         {/* LOGIN PAGE */}
-        <Route
-          path="/"
-          element={<Login setIsLoggedIn={setIsLoggedIn} />}
-        />
+        <Route path="/login" element={<Login />} />
 
-        {/* DASHBOARD PAGE */}
-        <Route
-          path="/admin/dashboard"
-          element={<Dashboard setIsLoggedIn={setIsLoggedIn} />}
-        />
-
+        {/* ADMIN DASHBOARD */}
+        <Route path="/admin/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

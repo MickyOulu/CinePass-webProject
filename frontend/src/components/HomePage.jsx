@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 // LOGO
 import logo from "../assets/north-star-logo.jpg";
 
-
-// MOVIES - Correct file names
+// MOVIES
 import spider from "../assets/movies/spider.jpg";
 import xxx from "../assets/movies/xxx.jpg";
 import doraemon from "../assets/movies/doraemon.jpg";
@@ -16,7 +15,6 @@ import blackpanther from "../assets/movies/blackpanther.jpg";
 import guardians from "../assets/movies/guardians.jpg";
 import captain from "../assets/movies/captain.jpg";
 import hangover from "../assets/movies/hangover.jpg";
-
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -43,7 +41,12 @@ const HomePage = () => {
 
           <div className="header-right">
             <FaSearch className="header-icon" />
-            <FaLock className="header-icon" onClick={() => navigate("/admin/login")} />
+            
+            {/* FIXED: Correct login route */}
+            <FaLock 
+              className="header-icon" 
+              onClick={() => navigate("/login")} 
+            />
           </div>
         </div>
 
