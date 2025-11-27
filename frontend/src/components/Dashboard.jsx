@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom"; 
 import "../style/dashboard.css";
 import logo from "../assets/north-star-logo.jpg";
+import { useNavigate } from "react-router-dom";
 
-const Dashboard = ({ setIsLoggedIn }) => {
+const Dashboard = () => {
+  const navigate = useNavigate();
 
   return (
     <div className="dashboard-page">
@@ -18,18 +19,19 @@ const Dashboard = ({ setIsLoggedIn }) => {
           </div>
         </div>
 
-        <button className="logout-btn" onClick={() => setIsLoggedIn(false)}>
-  Logout
-</button>
-
+        {/* LOGOUT BUTTON */}
+        <button
+          className="logout-btn"
+          onClick={() => navigate("/")}
+        >
+          Logout
+        </button>
       </header>
 
       {/* ====== NAVIGATION TABS ====== */}
       <div className="nav-tabs">
         <button className="tab active">Overview</button>
-        <Link to="/manage-shows">
-          <button className="tab">Manage Shows</button>
-        </Link>
+        <button className="tab">Manage Shows</button>
         <button className="tab">Staff Accounts</button>
         <button className="tab">Manage Bookings</button>
         <button className="tab">Revenue</button>
@@ -82,7 +84,6 @@ const Dashboard = ({ setIsLoggedIn }) => {
 
         <div className="summary-card">
           <h3 className="summary-title">Location Performance</h3>
-
           <p>Helsinki Central <span className="right-text">€2,880</span></p>
           <p>Cinema Nova Oulu <span className="right-text">€2,160</span></p>
           <p>Kino Baltic Turku <span className="right-text">€1,040</span></p>

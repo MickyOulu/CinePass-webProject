@@ -1,12 +1,13 @@
 import React from "react";
 import "../style/login.css";
 import logo from "../assets/north-star-logo.jpg";
+import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLoggedIn }) => {
- console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL);
-  // -----------------------------
-  // LOGIN FUNCTION
-  // -----------------------------
+const Login = () => {
+  const navigate = useNavigate();
+
+  console.log("Backend URL:", process.env.REACT_APP_BACKEND_URL);
+
   const handleLogin = async () => {
     const username = document.querySelector("#username").value.trim();
     const password = document.querySelector("#password").value.trim();
@@ -31,7 +32,7 @@ const Login = ({ setIsLoggedIn }) => {
 
       if (data.success) {
         alert("Login Successful!");
-        setIsLoggedIn(true);   // Redirect to dashboard
+        navigate("/admin/dashboard"); // redirect admin
       } else {
         alert(data.message);
       }
@@ -57,18 +58,15 @@ const Login = ({ setIsLoggedIn }) => {
           </div>
         </div>
 
-        {/* Lock Icon */}
         <div className="lock-box">
           <div className="lock-circle">
             <span className="lock-symbol">🔒</span>
           </div>
         </div>
 
-        {/* Titles */}
         <h2 className="main-title">Admin Portal</h2>
         <p className="subtitle">Secure access to North Star Booking management</p>
 
-        {/* Username */}
         <div className="input-group">
           <label>Email / Username</label>
           <div className="input-wrapper">
@@ -77,7 +75,6 @@ const Login = ({ setIsLoggedIn }) => {
           </div>
         </div>
 
-        {/* Password */}
         <div className="input-group">
           <label>Password</label>
           <div className="input-wrapper">
@@ -87,22 +84,18 @@ const Login = ({ setIsLoggedIn }) => {
           </div>
         </div>
 
-        {/* Forgot */}
         <div className="forgot-text">Forgot password?</div>
 
-        {/* Login Button */}
         <button className="login-btn" onClick={handleLogin}>
           Login to Dashboard
         </button>
 
-        {/* Demo box */}
         <div className="demo-box">
           <h4>Demo Credentials</h4>
           <p>Email: <strong>admin@northstar.com</strong></p>
           <p>Password: <strong>admin123</strong></p>
         </div>
 
-        {/* Footer */}
         <footer className="footer">
           © 2024 North Star Booking. All rights reserved.
         </footer>
