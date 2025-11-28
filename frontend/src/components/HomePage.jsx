@@ -44,9 +44,10 @@ const HomePage = () => {
             
             {/* FIXED: Correct login route */}
             <FaLock 
-              className="header-icon" 
-              onClick={() => navigate("/login")} 
-            />
+  className="header-icon" 
+  onClick={() => navigate("/admin/login")} 
+/>
+
           </div>
         </div>
 

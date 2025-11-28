@@ -29,13 +29,21 @@ const Dashboard = () => {
       </header>
 
       {/* ====== NAVIGATION TABS ====== */}
-      <div className="nav-tabs">
-        <button className="tab active">Overview</button>
-        <button className="tab">Manage Shows</button>
-        <button className="tab">Staff Accounts</button>
-        <button className="tab">Manage Bookings</button>
-        <button className="tab">Revenue</button>
-      </div>
+     <div className="nav-tabs">
+  <button className="tab active">Overview</button>
+
+  <button
+    className="tab"
+    onClick={() => navigate("/admin/shows")}
+  >
+    Manage Shows
+  </button>
+
+  <button className="tab">Staff Accounts</button>
+  <button className="tab">Manage Bookings</button>
+  <button className="tab">Revenue</button>
+</div>
+
 
       {/* ====== DASHBOARD TITLE ====== */}
       <h1 className="dashboard-title">Dashboard Overview</h1>
