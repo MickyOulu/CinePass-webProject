@@ -1,4 +1,7 @@
-/* Center mobile app on desktop */
+/* ============================================
+   MAIN LAYOUT
+============================================ */
+
 .mobile-wrapper {
   width: 100%;
   display: flex;
@@ -8,7 +11,6 @@
   padding: 20px 0;
 }
 
-/* Phone screen container */
 .mobile-container {
   width: 375px;
   background: linear-gradient(#002238, #003b50, #005469);
@@ -20,7 +22,10 @@
   max-height: 95vh;
 }
 
-/* HEADER */
+/* ============================================
+   HEADER (logo + search + lock)
+============================================ */
+
 .header {
   display: flex;
   align-items: center;
@@ -45,27 +50,86 @@
 .header-icon {
   font-size: 18px;
   cursor: pointer;
-}
-
-/* FILTERS */
-.filters-row {
-  display: flex;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.filter-btn {
-  flex: 1;
-  background: rgba(255,255,255,0.15);
-  border: none;
-  padding: 10px;
-  border-radius: 8px;
   color: white;
-  font-weight: 600;
-  font-size: 14px;
 }
 
-/* FEATURED MOVIE */
+/* ============================================
+   TOP NAV WHITE BAR (Movies | Locations | Language)
+============================================ */
+
+.top-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #003049;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.18);
+}
+
+/* Buttons inside the bar */
+.top-nav-btn {
+  background: #eef6ff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #003049;
+  font-weight: 600;
+}
+
+/* Language Selector */
+.top-nav-lang {
+  background: #eef6ff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #003049;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ============================================
+   LOCATION DROPDOWN
+============================================ */
+
+.location-container {
+  position: relative;
+}
+
+.location-dropdown {
+  position: absolute;
+  top: 45px;
+  left: 0;
+  background: #ffffff;
+  width: 140px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  z-index: 999;
+  overflow: hidden;
+}
+
+.location-item {
+  padding: 10px;
+  font-size: 14px;
+  color: #003049;
+  cursor: pointer;
+  background: #eef6ff;
+  border-bottom: 1px solid #d8e7f2;
+}
+
+.location-item:hover {
+  background: #d6ecff;
+}
+
+/* ============================================
+   FEATURED MOVIE CARD
+============================================ */
+
 .featured-card {
   background: rgba(255,255,255,0.08);
   border-radius: 12px;
@@ -92,16 +156,23 @@
   border-radius: 10px;
   font-weight: 700;
   font-size: 15px;
+  cursor: pointer;
 }
 
-/* SECTION TITLE */
+/* ============================================
+   SECTION TITLE
+============================================ */
+
 .section-title {
   margin-top: 25px;
   font-size: 18px;
   font-weight: 700;
 }
 
-/* MOVIE GRID */
+/* ============================================
+   MOVIE GRID LIST
+============================================ */
+
 .movie-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/homepage.css";
 import { FaSearch, FaLock } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-// LOGO
 import logo from "../assets/north-star-logo.jpg";
 
 // MOVIES
@@ -18,6 +17,9 @@ import hangover from "../assets/movies/hangover.jpg";
 
 const HomePage = () => {
   const navigate = useNavigate();
+  const [showLocations, setShowLocations] = useState(false);
+
+  const locations = ["Helsinki", "Oulu", "Tampere"];
 
   const movies = [
     { id: 1, title: "Spider-Man: Beyond the Web", poster: spider, showtime: "16:30", availability: "AVAILABLE" },
@@ -34,30 +36,47 @@ const HomePage = () => {
     <div className="mobile-wrapper">
       <div className="mobile-container">
 
-        {/* HEADER */}
+        {/* TOP HEADER */}
         <div className="header">
           <img src={logo} className="header-logo" alt="logo" />
           <span className="header-title">NORTH STAR</span>
 
           <div className="header-right">
             <FaSearch className="header-icon" />
-            
-            {/* FIXED: Correct login route */}
-            <FaLock 
-  className="header-icon" 
-  onClick={() => navigate("/admin/login")} 
-/>
-
+            <FaLock className="header-icon" onClick={() => navigate("/admin/login")} />
           </div>
         </div>
 
-        {/* FILTERS */}
-        <div className="filters-row">
-          <button className="filter-btn">🎬 Movies</button>
-          <button className="filter-btn">📍 Locations</button>
+        {/* WHITE NAV BAR */}
+        <div className="top-nav-bar">
+          <button className="top-nav-btn">Movies</button>
+
+          {/* LOCATIONS DROPDOWN */}
+          <div className="location-container">
+            <button
+              className="top-nav-btn"
+              onClick={() => setShowLocations(!showLocations)}
+            >
+              Locations ▾
+            </button>
+
+            {showLocations && (
+              <div className="location-dropdown">
+                {locations.map((loc) => (
+                  <div key={loc} className="location-item">{loc}</div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* LANGUAGE SELECT */}
+          <select className="top-nav-lang">
+            <option>EN</option>
+            <option>FI</option>
+          </select>
         </div>
 
-        {/* FEATURED */}
+        {/* FEATURED MOVIE */}
         <div className="featured-card">
           <img src={spider} className="featured-img" alt="" />
           <div className="featured-content">
@@ -66,7 +85,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* NOW IN CINEMA */}
+        {/* MOVIE LIST */}
         <h3 className="section-title">Now in the cinema</h3>
 
         <div className="movie-grid">
